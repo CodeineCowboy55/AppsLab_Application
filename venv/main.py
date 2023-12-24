@@ -28,7 +28,7 @@ def get_record():
         else:
             print("Invalid input. User name cannot be empty.")
 
-    # Customer Number
+    # Customer Number- Must be a 6 digit nubmer
     while True:
         try:
             customer_number = int(input("Enter Customer Number: "))
@@ -81,10 +81,12 @@ def get_record():
 
 def main():
     while True:
+        print("APPLICATION LAB OIL LIBARY\n")
         print("Please select an option:")
         print("1. Add record")
-        print("2. Option 2")
-        print("3. Exit")
+        print("2. Search Record")
+        print("3. Delete record")
+        print("4. Exit")
 
         user_input = input()
 
@@ -95,7 +97,7 @@ def main():
         elif user_input == "2":
             print("You selected Option 2.")
             # Add your code for Option 2 here
-        elif user_input == "3":
+        elif user_input == "4":
             print("Exiting the program.")
             break
         else:
