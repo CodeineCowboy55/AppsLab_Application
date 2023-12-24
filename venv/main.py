@@ -2,7 +2,7 @@ import datetime
 
 
 def get_record():
-    # Request Date
+    # Request Date - the day the request is submitted
     while True:
         try:
             request_date_str = input("Enter Request Date (dd/mm/yyyy): ")
@@ -16,11 +16,11 @@ def get_record():
         try:
             date_required_str = input("Enter Date Required (dd/mm/yyyy): ")
             date_required = datetime.datetime.strptime(date_required_str, "%d/%m/%Y")
-            break
+            break1
         except ValueError:
             print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
 
-    # User
+    # User - no validation required just a name of person entering
     while True:
         user = input("Enter User Name: ")
         if user:
