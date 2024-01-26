@@ -1,6 +1,5 @@
 import datetime
 
-
 def get_record():
     # Request Date - the day the request is submitted
     while True:
@@ -16,7 +15,7 @@ def get_record():
         try:
             date_required_str = input("Enter Date Required (dd/mm/yyyy): ")
             date_required = datetime.datetime.strptime(date_required_str, "%d/%m/%Y")
-            break1
+            break
         except ValueError:
             print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
 
@@ -28,11 +27,15 @@ def get_record():
         else:
             print("Invalid input. User name cannot be empty.")
 
-    # Customer Number- Must be a 6 digit nubmer
+    # Customer Number - Must be a 6 digit number
     while True:
         try:
-            customer_number = int(input("Enter Customer Number: "))
-            break
+            customer_number = input("Enter Customer Number: ")
+            if len(customer_number) == 6 and customer_number.isdigit():
+                customer_number = int(customer_number)
+                break
+            else:
+                print("Invalid input. Please enter a 6-digit number.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
@@ -78,10 +81,9 @@ def get_record():
         "Base": base
     }
 
-
 def main():
     while True:
-        print("APPLICATION LAB OIL LIBARY\n")
+        print("APPLICATION LAB OIL LIBRARY\n")
         print("Please select an option:")
         print("1. Add record")
         print("2. Search Record")
@@ -102,7 +104,6 @@ def main():
             break
         else:
             print("Invalid input. Please try again.")
-
 
 if __name__ == "__main__":
     main()
