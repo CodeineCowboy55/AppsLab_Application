@@ -19,7 +19,7 @@ def get_record():
         except ValueError:
             print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
 
-    # User - no validation required just a name of person entering
+    # User - no validation required just a name of person entering this is string input
     while True:
         user = input("Enter User Name: ")
         if user:
