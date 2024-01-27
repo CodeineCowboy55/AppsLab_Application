@@ -91,6 +91,7 @@ def get_record():
         "Product Type": product_type,
         "Base": base
     }
+#The go back to home screen def allows the user at then end of adding an input to go back to the home screen
 def go_back_to_home_screen():
     input("\nPress Enter to go back to the home screen...\n")
 def main():
