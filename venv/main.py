@@ -42,12 +42,15 @@ def get_record():
     # Project Number
     while True:
         try:
-            project_number = int(input("Enter Project Number: "))
-            break
+            project_number = int(input("Enter 6-digit Project Number: "))
+            if 100000 <= project_number <= 999999:
+                break
+            else:
+                print("Invalid input. Please enter a 6-digit number.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    # Fragrance Number
+    # Fragrance Number Must be a 6 digit number
     while True:
         try:
             fragrance_number = int(input("Enter Fragrance Number: "))
@@ -58,16 +61,24 @@ def get_record():
     # Dosage
     while True:
         try:
-            dosage = float(input("Enter Dosage: "))
-            break
+            fragrance_number = float(input("Enter Fragrance Percentage: "))
+            if 0 <= fragrance_number <= 100:
+                break
+            else:
+                print("Invalid input. Please enter a percentage between 0 and 100.")
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a valid number.")
 
-    # Product Type
+    # Product Type is string so can be the name of product that needs to be made.
     product_type = input("Enter Product Type: ")
 
-    # Base
-    base = input("Enter Base (Yes/No): ").lower() == 'yes'
+    # Base Must be yes or no to define if its a base for another product or its the products fragrance
+    while True:
+        base = input("Enter Base (Yes/No): ").strip().lower()
+        if base == 'yes' or base == 'no':
+            break
+        else:
+            print("Invalid input. Please enter 'Yes' or 'No'.")
 
     return {
         "Request Date": request_date,
