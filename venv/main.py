@@ -1,5 +1,5 @@
 import datetime
-
+import sys  # Import the sys module
 def get_record():
     # Request Date - the day the request is submitted
     while True:
@@ -116,7 +116,7 @@ def main():
             go_back_to_home_screen()
         elif user_input == "4":
             print("Exiting the program.")
-            break
+            sys.exit()  # Using the Sys function will close the program
         else:
             print("Invalid input. Please try again.")
 
