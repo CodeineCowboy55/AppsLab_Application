@@ -19,7 +19,7 @@ def get_record():
         except ValueError:
             print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
 
-    # User - no validation required just a name of person entering this is string input
+    # User - no validation required just a name of person entering; this is a string input
     while True:
         user = input("Enter User Name: ")
         if user:
@@ -42,7 +42,7 @@ def get_record():
     # Project Number
     while True:
         try:
-            project_number = int(input("Enter 6-digit Project Number: "))
+            project_number = int(input("Enter Project Number: "))
             if 100000 <= project_number <= 999999:
                 break
             else:
@@ -50,7 +50,7 @@ def get_record():
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    # Fragrance Number Must be a 6 digit number
+    # Fragrance Number - Must be a 6 digit number
     while True:
         try:
             fragrance_number = int(input("Enter Fragrance Number: "))
@@ -61,18 +61,18 @@ def get_record():
     # Dosage
     while True:
         try:
-            fragrance_number = float(input("Enter Fragrance Percentage: "))
-            if 0 <= fragrance_number <= 100:
+            dosage = float(input("Enter Fragrance Percentage: "))
+            if 0 <= dosage <= 100:
                 break
             else:
                 print("Invalid input. Please enter a percentage between 0 and 100.")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # Product Type is string so can be the name of product that needs to be made.
+    # Product Type is string so can be the name of the product that needs to be made.
     product_type = input("Enter Product Type: ")
 
-    # Base Must be yes or no to define if its a base for another product or its the products fragrance
+    # Base - Must be yes or no to define if it's a base for another product or its the product's fragrance
     while True:
         base = input("Enter Base (Yes/No): ").strip().lower()
         if base == 'yes' or base == 'no':
@@ -91,7 +91,8 @@ def get_record():
         "Product Type": product_type,
         "Base": base
     }
-
+def go_back_to_home_screen():
+    input("\nPress Enter to go back to the home screen...\n")
 def main():
     while True:
         print("APPLICATION LAB OIL LIBRARY\n")
@@ -107,9 +108,11 @@ def main():
             print("You selected Option 1.")
             record = get_record()
             print(record)
+            go_back_to_home_screen()
         elif user_input == "2":
             print("You selected Option 2.")
             # Add your code for Option 2 here
+            go_back_to_home_screen()
         elif user_input == "4":
             print("Exiting the program.")
             break
