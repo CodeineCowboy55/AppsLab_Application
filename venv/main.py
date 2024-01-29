@@ -94,14 +94,27 @@ def get_record():
 #The go back to home screen def allows the user at then end of adding an input to go back to the home screen
 def go_back_to_home_screen():
     input("\nPress Enter to go back to the home screen...\n")
+
+#Purpose of Def confirm Exit is to make sure the user wants to exit the application
+def confirm_exit():
+    while True:
+        choice = input("Do you really want to exit the application? (yes/no): ").strip().lower()
+        if choice == 'yes':
+            print("Exiting the program.")
+            sys.exit()
+        elif choice == 'no':
+            break
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
 def main():
     while True:
-        print("APPLICATION LAB OIL LIBRARY\n")
+        print("APPLICATION LAB OIL LIBRARY- V1.3\n")
+        print("_____________________________\n")
         print("Please select an option:")
         print("1. Add record")
         print("2. Search Record")
         print("3. Delete record")
-        print("4. Exit")
+        print("4. Exit Application")
 
         user_input = input()
 
@@ -114,9 +127,12 @@ def main():
             print("You selected Option 2.")
             # Add your code for Option 2 here
             go_back_to_home_screen()
+        elif user_input == "3":
+            print("You selected Option 3.")
+            # Add your code for Option 3 here
+            go_back_to_home_screen()
         elif user_input == "4":
-            print("Exiting the program.")
-            sys.exit()  # Using the Sys function will close the program
+            confirm_exit()
         else:
             print("Invalid input. Please try again.")
 
