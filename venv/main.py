@@ -116,25 +116,32 @@ def main():
         print("3. Delete record")
         print("4. Exit Application")
 
-        user_input = input()
+        user_input = input("Enter your choice (1-4): ")
 
-        if user_input == "1":
-            print("You selected Option 1.")
-            record = get_record()
-            print(record)
-            go_back_to_home_screen()
-        elif user_input == "2":
-            print("You selected Option 2.")
-            # Add your code for Option 2 here
-            go_back_to_home_screen()
-        elif user_input == "3":
-            print("You selected Option 3.")
-            # Add your code for Option 3 here
-            go_back_to_home_screen()
-        elif user_input == "4":
-            confirm_exit()
+        try:
+            user_input = int(user_input)
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            continue
+
+        if 1 <= user_input <= 4:
+            if user_input == 1:
+                print("You selected Option 1.")
+                record = get_record()
+                print(record)
+                go_back_to_home_screen()
+            elif user_input == 2:
+                print("You selected Option 2.")
+                # Add your code for Option 2 here
+                go_back_to_home_screen()
+            elif user_input == 3:
+                print("You selected Option 3.")
+                # Add your code for Option 3 here
+                go_back_to_home_screen()
+            elif user_input == 4:
+                confirm_exit()
         else:
-            print("Invalid input. Please try again.")
+            print("Invalid input. Please enter a number between 1 and 4.")
 
 if __name__ == "__main__":
     main()
