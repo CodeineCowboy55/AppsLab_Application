@@ -106,6 +106,8 @@ def confirm_exit():
             break
         else:
             print("Invalid input. Please enter 'yes' or 'no'.")
+
+#Def main is the main menu that is the start and control of the application here user will select option to navigate
 def main():
     while True:
         print("APPLICATION LAB OIL LIBRARY- V1.3\n")
