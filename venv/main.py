@@ -37,7 +37,7 @@ def get_record():
             else:
                 print("Invalid input. Please enter a 6-digit number.")
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input. Please enter a valid number.")
 
     # Project Number
     while True:
@@ -118,13 +118,13 @@ def main():
         print("3. Delete record")
         print("4. Exit Application")
 
-        user_input = input("Enter your choice (1-4): ")
-
         try:
-            user_input = int(user_input)
+            user_input = int(input("Enter your choice (1-4): "))
         except ValueError:
             print("Invalid input. Please enter a number.")
             continue
+        except (KeyboardInterrupt, EOFError):
+            confirm_exit()
 
         if 1 <= user_input <= 4:
             if user_input == 1:
@@ -134,11 +134,11 @@ def main():
                 go_back_to_home_screen()
             elif user_input == 2:
                 print("You selected Option 2.")
-                # Add your code for Option 2 here
+                # Add add my option for searching record
                 go_back_to_home_screen()
             elif user_input == 3:
                 print("You selected Option 3.")
-                # Add your code for Option 3 here
+                # add my code for deleting record later
                 go_back_to_home_screen()
             elif user_input == 4:
                 confirm_exit()
