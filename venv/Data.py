@@ -239,3 +239,5 @@ def delete_record():
         print(f'DELETED {id_tofetch}')
     except KeyError: # this will be a different error IndexError
         print(" ")
+
+#make sur change has been applied
