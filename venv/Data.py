@@ -120,4 +120,5 @@ Project10 = {
     "Base": True,
 }
 
-Project_Dictionary = {1: Project1, 2: Project2, 3: Project3, 4: Project4, 5: Project5, 6: Project6, 7: Project7, 8: Project8, 9: Project9, 10: Project10}
+Project_Dictionary = {1: Project1, 2: Project2, 3: Project3, 4: Project4, 5: Project5,
+                      6: Project6, 7: Project7, 8: Project8, 9: Project9, 10: Project10}
