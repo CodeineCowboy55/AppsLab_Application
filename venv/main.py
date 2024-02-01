@@ -56,14 +56,12 @@ def main():
         if 1 <= user_input <= 4:
             if user_input == 1:
                 print("You selected Option 1.")
-                record = get_record()
-                print(record)
+                add_record()
                 go_back_to_home_screen()
             elif user_input == 2:
                 print("You selected Option 2.")
-                add_record()
-
-                # Add add my option for searching record
+                record = get_record()
+                print(record)
                 go_back_to_home_screen()
             elif user_input == 3:
                 print("You selected Option 3.")
