@@ -7,16 +7,20 @@ def print_projectdata():
     header = (
         f'{"ID":<5} | {"Date Required":<15} | {"Date Requested":<15} | {"User":<15} | '
         f'{"Customer Number":<15} | {"Project Number":<15} | {"Fragrance Number":<18} | '
-        f'{"Dosage":<10} | {"Product Type":<15} | {"Base":<10}'
+        f'{"Dosage (%)":<10} | {"Product Type":<15} | {"Base":<10}'  # Updated header for 'Dosage'
     )
     print(header)
     print("-" * len(header))
 
     for key, value in my_projectdict.items():
+        # Map 'Base' value to "Yes" or "No"
+        base_display = "Yes" if value.get("Base", 0) > 0 else "No"
+        # Convert 'Dosage' value to percentage
+        dosage_percentage = "{:.2%}".format(value.get("Dosage", 0))
         temp_str = (
             f'{key:<5} | {value.get("Date Required", ""):<15} | {value.get("Date Required", ""):<15} | {value.get("User", ""):<15} | '
             f'{value.get("Customer Number", ""):<15} | {value.get("Project Number", ""):<15} | {value.get("Fragrance Number", ""):<18} | '
-            f'{value.get("Dosage", ""):<10} | {value.get("Product Type", ""):<15} | {value.get("Base", ""):<10}'
+            f'{dosage_percentage:<10} | {value.get("Product Type", ""):<15} | {base_display:<10}'  # Display 'Dosage' as percentage
         )
         print(temp_str)
 
