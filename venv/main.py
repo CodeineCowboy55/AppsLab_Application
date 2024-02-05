@@ -53,7 +53,8 @@ def main():
         print("2. Search Record")
         print("3. Edit Record")
         print("4. Delete record")
-        print("5. Exit Application")
+        print("5. Read me")
+        print("6. Exit Application")
 
         try:
             user_input = int(input("Enter your choice (1-5): "))
@@ -63,7 +64,7 @@ def main():
         except (KeyboardInterrupt, EOFError):
             confirm_exit()
 
-        if 1 <= user_input <= 5:
+        if 1 <= user_input <= 6:  # Change the condition to include option 6
             if user_input == 1:
                 print("You selected Option 1.")
                 add_record()
@@ -82,9 +83,12 @@ def main():
                 delete_record()
                 go_back_to_home_screen()
             elif user_input == 5:
+                print("Placeholder for Option 5.")
+                go_back_to_home_screen()
+            elif user_input == 6:
                 confirm_exit()
         else:
-            print("Invalid input. Please enter a number between 1 and 5.")
+            print("Invalid input. Please enter a number between 1 and 6.")
 
 if __name__ == "__main__":
     main()
