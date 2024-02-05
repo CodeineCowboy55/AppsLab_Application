@@ -19,7 +19,7 @@ my_projectdict ={
         "Customer Number": 4569825,
         "Project Number": 125478,
         "Fragrance Number": 69854751,
-        "Dosage": 1.6,
+        "Dosage": 0.46,
         "Product Type": "Room Spray",
         "Base": False,
     },
@@ -31,7 +31,7 @@ my_projectdict ={
         "Customer Number": 452168,
         "Project Number": 395216,
         "Fragrance Number": 4698215,
-        "Dosage": 4.6,
+        "Dosage": 0.36,
         "Product Type": "candle",
         "Base": True,
     },
@@ -43,7 +43,7 @@ my_projectdict ={
         "Customer Number": 162548,
         "Project Number": 974216,
         "Fragrance Number": 7563219,
-        "Dosage": 6.5,
+        "Dosage": 0.25,
         "Product Type": "wax melt",
         "Base": 0.5,
     },
@@ -55,7 +55,7 @@ my_projectdict ={
         "Customer Number": 165289,
         "Project Number": 652158,
         "Fragrance Number": 1247854,
-        "Dosage": 8.9,
+        "Dosage": 0.8,
         "Product Type": "conditioner",
         "Base": False,
     },
@@ -67,7 +67,7 @@ my_projectdict ={
         "Customer Number": 147528,
         "Project Number": 942357,
         "Fragrance Number": 1254239,
-        "Dosage": 12,
+        "Dosage": 0.12,
         "Product Type": "Polish",
         "Base": False,
     },
@@ -79,7 +79,7 @@ my_projectdict ={
         "Customer Number": 489279,
         "Project Number": 164852,
         "Fragrance Number": 7159349,
-        "Dosage": 2.6,
+        "Dosage": 0.04,
         "Product Type": "EDP",
         "Base": True,
     },
@@ -91,7 +91,7 @@ my_projectdict ={
         "Customer Number": 456852,
         "Project Number": 951458,
         "Fragrance Number": 4815974,
-        "Dosage": 10,
+        "Dosage": 0.21,
         "Product Type": "Candle",
         "Base": False,
     },
@@ -103,7 +103,7 @@ my_projectdict ={
         "Customer Number": 584965,
         "Project Number": 136548,
         "Fragrance Number": 2089064,
-        "Dosage": 0.9,
+        "Dosage": 0.4,
         "Product Type": "Room spray",
         "Base": True,
     },
@@ -115,7 +115,7 @@ my_projectdict ={
         "Customer Number": 102654,
         "Project Number": 603254,
         "Fragrance Number": 2040856,
-        "Dosage": 1.8,
+        "Dosage": 0.44,
         "Product Type": "EDT",
         "Base": True,
     }
@@ -225,10 +225,36 @@ def add_record():
 def get_record():
     try:
         id_tofetch = int(input("Enter the ID to fetch record: "))
-        # check the id exists
-        print(my_projectdict[id_tofetch])
-    except ValueError: # this will be a different error IndexError
-        print(" ")
+        record = my_projectdict.get(id_tofetch)
+
+        if record:
+            print("\nRecord found:")
+            print_projectdata_header()
+            print_projectdata_row(id_tofetch, record)
+        else:
+            print(f"No record found for ID {id_tofetch}.")
+    except ValueError:
+        print("Invalid input. Please enter a valid ID.")
+
+def print_projectdata_header():
+    header = (
+        f'{"ID":<5} | {"Date Required":<15} | {"Date Requested":<15} | {"User":<15} | '
+        f'{"Customer Number":<15} | {"Project Number":<15} | {"Fragrance Number":<18} | '
+        f'{"Dosage":<10} | {"Product Type":<15} | {"Base (%)":<10}'  # Updated header for 'Base' column
+    )
+    print(header)
+    print("-" * len(header))
+
+def print_projectdata_row(id_value, record):
+    # Format 'Base' value as percentage and display with two decimal places
+    base_percentage = "{:.2%}".format(record.get("Base", 0))
+    temp_str = (
+        f'{id_value:<5} | {record.get("Date Required", ""):<15} | {record.get("Date Required", ""):<15} | {record.get("User", ""):<15} | '
+        f'{record.get("Customer Number", ""):<15} | {record.get("Project Number", ""):<15} | {record.get("Fragrance Number", ""):<18} | '
+        f'{record.get("Dosage", ""):<10} | {record.get("Product Type", ""):<15} | {base_percentage:<10}'  # Display 'Base' as percentage
+    )
+    print(temp_str)
+
 
 
 def delete_record():
