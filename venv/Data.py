@@ -323,14 +323,15 @@ def edit_record():
             if new_product_type:
                 record_to_edit["Product Type"] = new_product_type
             if new_base:
-                if new_base.strip().lower() == 'yes':
+                new_base_lower = new_base.strip().lower()
+                if new_base_lower == 'yes':
                     record_to_edit["Base"] = True
-                elif new_base.strip().lower() == 'no':
+                elif new_base_lower == 'no':
                     record_to_edit["Base"] = False
-            print("\nRecord updated successfully:")
-            print_projectdata_header()
-            print_projectdata_row(id_to_edit, record_to_edit)
-        else:
-            print(f"No record found for ID {id_to_edit}.")
+                else:
+                    print("Invalid input for 'Base'. Please enter 'Yes' or 'No'.")
+                # Other updates...
+            else:
+                print(f"No record found for ID {id_to_edit}.")
     except ValueError:
-        print("Invalid input. Please enter a valid ID.")
+            print("Invalid input. Please enter a valid ID.")

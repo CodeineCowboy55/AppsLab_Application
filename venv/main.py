@@ -29,6 +29,7 @@ def print_projectdata():
 #The go back to home screen def allows the user at then end of adding an input to go back to the home screen
 def go_back_to_home_screen():
     input("\nPress Enter to go back to the home screen...\n")
+    print_projectdata()  # Refresh the project data display
 
 #Purpose of Def confirm Exit is to make sure the user wants to exit the application
 def confirm_exit():
