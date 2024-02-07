@@ -57,14 +57,13 @@ def main():
         print("6. Exit Application")
 
         try:
-            user_input = int(input("Enter your choice (1-5): "))
+            user_input = int(input("Enter your choice (1-6): "))
         except ValueError:
             print("Invalid input. Please enter a number.")
             continue
         except (KeyboardInterrupt, EOFError):
             confirm_exit()
-
-        if 1 <= user_input <= 6:  # Change the condition to include option 6
+        if 1 <= user_input <= 6:
             if user_input == 1:
                 print("You selected Option 1.")
                 add_record()
