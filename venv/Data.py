@@ -136,9 +136,13 @@ def add_record():
         try:
             date_required_str = input("Enter Date Required (dd/mm/yyyy): ")
             date_required = datetime.datetime.strptime(date_required_str, "%d/%m/%Y")
-            break
+            if date_required > request_date:  # Check if Date Required is after Request Date
+                break
+            else:
+                print("Date Required must be after Request Date.")
         except ValueError:
             print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
+
 
     # User - no validation required just a name of person entering; this is a string input
     while True:
@@ -291,8 +295,21 @@ def edit_record():
             # Update the record with the new data
             if new_request_date_str:
                 record_to_edit["Request Date"] = new_request_date_str
-            if new_date_required_str:
-                record_to_edit["Date Required"] = new_date_required_str
+            while True:
+                try:
+                    new_date_required_str = input(
+                        "Enter new Date Required (dd/mm/yyyy) or press Enter to keep the existing value: ")
+                    if not new_date_required_str:  # If user keeps existing value
+                        new_date_required_str = record_to_edit["Date Required"]
+                        break
+                    new_date_required = datetime.datetime.strptime(new_date_required_str, "%d/%m/%Y")
+                    request_date = datetime.datetime.strptime(record_to_edit["Request Date"], "%d/%m/%Y")
+                    if new_date_required > request_date:  # Check if Date Required is after Request Date
+                        break
+                    else:
+                        print("Date Required must be after Request Date.")
+                except ValueError:
+                    print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
             if new_user:
                 record_to_edit["User"] = new_user
             if new_customer_number:
@@ -310,7 +327,6 @@ def edit_record():
                     record_to_edit["Base"] = True
                 elif new_base.strip().lower() == 'no':
                     record_to_edit["Base"] = False
-
             print("\nRecord updated successfully:")
             print_projectdata_header()
             print_projectdata_row(id_to_edit, record_to_edit)
