@@ -266,4 +266,55 @@ def delete_record():
     except KeyError: # this will be a different error IndexError
         print(" ")
 
-#make sur change has been applied
+def edit_record():
+    try:
+        id_to_edit = int(input("Enter the ID of the record you want to edit: "))
+        record_to_edit = my_projectdict.get(id_to_edit)
+
+        if record_to_edit:
+            print("\nExisting Record:")
+            print_projectdata_header()
+            print_projectdata_row(id_to_edit, record_to_edit)
+            print("\nEnter the new data:")
+
+            # You can choose which fields you want to edit
+            new_request_date_str = input("Enter new Request Date (dd/mm/yyyy) or press Enter to keep the existing value: ")
+            new_date_required_str = input("Enter new Date Required (dd/mm/yyyy) or press Enter to keep the existing value: ")
+            new_user = input("Enter new User Name or press Enter to keep the existing value: ")
+            new_customer_number = input("Enter new Customer Number or press Enter to keep the existing value: ")
+            new_project_number = input("Enter new Project Number or press Enter to keep the existing value: ")
+            new_fragrance_number = input("Enter new Fragrance Number or press Enter to keep the existing value: ")
+            new_dosage = input("Enter new Fragrance Percentage or press Enter to keep the existing value: ")
+            new_product_type = input("Enter new Product Type or press Enter to keep the existing value: ")
+            new_base = input("Enter new Base (Yes/No) or press Enter to keep the existing value: ")
+
+            # Update the record with the new data
+            if new_request_date_str:
+                record_to_edit["Request Date"] = new_request_date_str
+            if new_date_required_str:
+                record_to_edit["Date Required"] = new_date_required_str
+            if new_user:
+                record_to_edit["User"] = new_user
+            if new_customer_number:
+                record_to_edit["Customer Number"] = int(new_customer_number)
+            if new_project_number:
+                record_to_edit["Project Number"] = int(new_project_number)
+            if new_fragrance_number:
+                record_to_edit["Fragrance Number"] = int(new_fragrance_number)
+            if new_dosage:
+                record_to_edit["Dosage"] = float(new_dosage)
+            if new_product_type:
+                record_to_edit["Product Type"] = new_product_type
+            if new_base:
+                if new_base.strip().lower() == 'yes':
+                    record_to_edit["Base"] = True
+                elif new_base.strip().lower() == 'no':
+                    record_to_edit["Base"] = False
+
+            print("\nRecord updated successfully:")
+            print_projectdata_header()
+            print_projectdata_row(id_to_edit, record_to_edit)
+        else:
+            print(f"No record found for ID {id_to_edit}.")
+    except ValueError:
+        print("Invalid input. Please enter a valid ID.")

@@ -1,6 +1,6 @@
 import datetime
 import sys  # Import the sys module
-from Data import my_projectdict, add_record, get_record, delete_record
+from Data import my_projectdict, add_record, get_record, delete_record, edit_record
 
 
 def print_projectdata():
@@ -76,7 +76,7 @@ def main():
                 go_back_to_home_screen()
             elif user_input == 3:
                 print("You selected Option 3.")
-                edit_record()  # Placeholder for edit_record function
+                edit_record()
                 go_back_to_home_screen()
             elif user_input == 4:
                 print("You selected Option 4.")
