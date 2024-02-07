@@ -5,7 +5,7 @@ from Data import my_projectdict, add_record, get_record, delete_record
 
 def print_projectdata():
     header = (
-        f'{"ID":<5} | {"Date Required":<15} | {"Date Requested":<15} | {"User":<15} | '
+        f'{"ID":<5} | {"Date Requested":<15} | {"Date Required":<15} | {"User":<15} | '
         f'{"Customer Number":<15} | {"Project Number":<15} | {"Fragrance Number":<18} | '
         f'{"Dosage (%)":<10} | {"Product Type":<15} | {"Base":<10}'  # Updated header for 'Dosage'
     )
@@ -18,7 +18,7 @@ def print_projectdata():
         # Convert 'Dosage' value to percentage
         dosage_percentage = "{:.2%}".format(value.get("Dosage", 0))
         temp_str = (
-            f'{key:<5} | {value.get("Date Required", ""):<15} | {value.get("Date Required", ""):<15} | {value.get("User", ""):<15} | '
+            f'{key:<5} | {value.get("Request Date", ""):<15} | {value.get("Date Required", ""):<15} | {value.get("User", ""):<15} | '
             f'{value.get("Customer Number", ""):<15} | {value.get("Project Number", ""):<15} | {value.get("Fragrance Number", ""):<18} | '
             f'{dosage_percentage:<10} | {value.get("Product Type", ""):<15} | {base_display:<10}'  # Display 'Dosage' as percentage
         )
