@@ -1,14 +1,13 @@
 #This is where the admin  password and delete record definition is kept
 from Data import my_projectdict
 
-
 def delete_record():
     try:
         # Enter the password to allow deletion
         password = input("Enter the password to delete records: ")
 
         # Check if the password is correct
-        if password == "your_password_here":  # Replace "your_password_here" with your actual password
+        if password == "Gabagoo13!":  #This is the password enter be able to delete a record only admin should know password
             id_tofetch = int(input("Enter the ID to fetch record: "))
 
             # Check if the ID exists

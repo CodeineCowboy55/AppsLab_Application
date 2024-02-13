@@ -3,7 +3,6 @@ import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record
 from Admin import delete_record
 
-
 def print_projectdata():
     header = (
         f'{"ID":<5} | {"Date Requested":<15} | {"Date Required":<15} | {"User":<15} | '
