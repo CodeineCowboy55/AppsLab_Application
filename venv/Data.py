@@ -259,17 +259,6 @@ def print_projectdata_row(id_value, record):
     )
     print(temp_str)
 
-
-
-def delete_record():
-    try:
-        id_tofetch = int(input("Enter the ID to fetch record: "))
-        # check the id exists
-        del my_projectdict[id_tofetch]
-        print(f'DELETED {id_tofetch}')
-    except KeyError: # this will be a different error IndexError
-        print(" ")
-
 def edit_record():
     try:
         id_to_edit = int(input("Enter the ID of the record you want to edit: "))

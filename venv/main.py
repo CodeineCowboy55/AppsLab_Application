@@ -1,6 +1,7 @@
 import datetime
 import sys  # Import the sys module
-from Data import my_projectdict, add_record, get_record, delete_record, edit_record
+from Data import my_projectdict, add_record, get_record, edit_record
+from Admin import delete_record
 
 
 def print_projectdata():
