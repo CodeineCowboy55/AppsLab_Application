@@ -249,13 +249,16 @@ def print_projectdata_header():
     print(header)
     print("-" * len(header))
 
+
 def print_projectdata_row(id_value, record):
-    # Format 'Base' value as percentage and display with two decimal places
-    base_percentage = "{:.2%}".format(record.get("Base", 0))
+    # Convert 'Base' value to "Yes" or "No" instead of percentage this is crucial as user needs to see it as a yes or no to understand the value
+    base_value = "Yes" if record.get("Base") else "No"
+
     temp_str = (
         f'{id_value:<5} | {record.get("Date Required", ""):<15} | {record.get("Date Required", ""):<15} | {record.get("User", ""):<15} | '
         f'{record.get("Customer Number", ""):<15} | {record.get("Project Number", ""):<15} | {record.get("Fragrance Number", ""):<18} | '
-        f'{record.get("Dosage", ""):<10} | {record.get("Product Type", ""):<15} | {base_percentage:<10}'  # Display 'Base' as percentage
+        f'{record.get("Dosage", ""):<10} | {record.get("Product Type", ""):<15} | {base_value:<10}'
+    # Display 'Base' as "Yes" or "No"
     )
     print(temp_str)
 
