@@ -1,4 +1,5 @@
 import datetime
+import msvcrt  # I have imported this moduel to allow me to include a home button
 import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record
 from Admin import delete_record
@@ -42,12 +43,16 @@ def confirm_exit():
             break
         else:
             print("Invalid input. Please enter 'yes' or 'no'.")
+#this def bellow allows the user no matter where they are in app to go back to the home screen
+def is_escape_pressed():
+    return msvcrt.kbhit() and msvcrt.getch() == b'\x1b'
 
 #Def main is the main menu that is the start and control of the application here user will select option to navigate
 def main():
     while True:
         print("APPLICATION LAB OIL LIBRARY- V1.3\n")
-        print("_____________________________\n")
+        print(
+            "________________________________________________________________________________________________________________________________________________________________\n")
         print_projectdata()
         print("Please select an option:")
         print("1. Add record")
@@ -64,6 +69,11 @@ def main():
             continue
         except (KeyboardInterrupt, EOFError):
             confirm_exit()
+
+        if is_escape_pressed():  # Check if Escape key is pressed
+            print("Going back to the home screen...")
+            continue
+
         if 1 <= user_input <= 6:
             if user_input == 1:
                 print("You selected Option 1.")
@@ -89,6 +99,7 @@ def main():
                 confirm_exit()
         else:
             print("Invalid input. Please enter a number between 1 and 6.")
+
 
 if __name__ == "__main__":
     main()
