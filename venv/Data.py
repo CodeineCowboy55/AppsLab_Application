@@ -260,67 +260,69 @@ def print_projectdata_row(id_value, record):
     print(temp_str)
 
 def edit_record():
-    try:
-        id_to_edit = int(input("Enter the ID of the record you want to edit: "))
-        record_to_edit = my_projectdict.get(id_to_edit)
+    while True:
+        try:
+            id_to_edit = int(input("Enter the ID of the record you want to edit: "))
+            record_to_edit = my_projectdict.get(id_to_edit)
 
-        if record_to_edit:
-            print("\nExisting Record:")
-            print_projectdata_header()
-            print_projectdata_row(id_to_edit, record_to_edit)
-            print("\nEnter the new data:")
+            if record_to_edit:
+                print("\nExisting Record:")
+                print_projectdata_header()
+                print_projectdata_row(id_to_edit, record_to_edit)
+                print("\nEnter the new data:")
 
-            # You can choose which fields you want to edit
-            new_request_date_str = input("Enter new Request Date (dd/mm/yyyy) or press Enter to keep the existing value: ")
-            new_date_required_str = input("Enter new Date Required (dd/mm/yyyy) or press Enter to keep the existing value: ")
-            new_user = input("Enter new User Name or press Enter to keep the existing value: ")
-            new_customer_number = input("Enter new Customer Number or press Enter to keep the existing value: ")
-            new_project_number = input("Enter new Project Number or press Enter to keep the existing value: ")
-            new_fragrance_number = input("Enter new Fragrance Number or press Enter to keep the existing value: ")
-            new_dosage = input("Enter new Fragrance Percentage or press Enter to keep the existing value: ")
-            new_product_type = input("Enter new Product Type or press Enter to keep the existing value: ")
-            new_base = input("Enter new Base (Yes/No) or press Enter to keep the existing value: ")
+                # You can choose which fields you want to edit
+                new_request_date_str = input("Enter new Request Date (dd/mm/yyyy) or press Enter to keep the existing value: ")
+                new_date_required_str = input("Enter new Date Required (dd/mm/yyyy) or press Enter to keep the existing value: ")
+                new_user = input("Enter new User Name or press Enter to keep the existing value: ")
+                new_customer_number = input("Enter new Customer Number or press Enter to keep the existing value: ")
+                new_project_number = input("Enter new Project Number or press Enter to keep the existing value: ")
+                new_fragrance_number = input("Enter new Fragrance Number or press Enter to keep the existing value: ")
+                new_dosage = input("Enter new Fragrance Percentage or press Enter to keep the existing value: ")
+                new_product_type = input("Enter new Product Type or press Enter to keep the existing value: ")
+                new_base = input("Enter new Base (Yes/No) or press Enter to keep the existing value: ")
 
-            # Update the record with the new data
-            if new_request_date_str:
-                record_to_edit["Request Date"] = new_request_date_str
-            while True:
-                try:
-                    new_date_required_str = input(
-                        "Enter new Date Required (dd/mm/yyyy) or press Enter to keep the existing value: ")
-                    if not new_date_required_str:  # If user keeps existing value
-                        new_date_required_str = record_to_edit["Date Required"]
-                        break
-                    new_date_required = datetime.datetime.strptime(new_date_required_str, "%d/%m/%Y")
-                    request_date = datetime.datetime.strptime(record_to_edit["Request Date"], "%d/%m/%Y")
-                    if new_date_required > request_date:  # Check if Date Required is after Request Date
-                        break
+                # Update the record with the new data
+                if new_request_date_str:
+                    record_to_edit["Request Date"] = new_request_date_str
+
+                if new_date_required_str:
+                    try:
+                        new_date_required = datetime.datetime.strptime(new_date_required_str, "%d/%m/%Y")
+                        request_date = datetime.datetime.strptime(record_to_edit["Request Date"], "%d/%m/%Y")
+                        if new_date_required > request_date:  # Check if Date Required is after Request Date
+                            record_to_edit["Date Required"] = new_date_required_str
+                        else:
+                            print("Date Required must be after Request Date.")
+                    except ValueError:
+                        print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
+
+                if new_user:
+                    record_to_edit["User"] = new_user
+                if new_customer_number:
+                    record_to_edit["Customer Number"] = int(new_customer_number)
+                if new_project_number:
+                    record_to_edit["Project Number"] = int(new_project_number)
+                if new_fragrance_number:
+                    record_to_edit["Fragrance Number"] = int(new_fragrance_number)
+                if new_dosage:
+                    record_to_edit["Dosage"] = float(new_dosage)
+                if new_product_type:
+                    record_to_edit["Product Type"] = new_product_type
+                if new_base:
+                    new_base_lower = new_base.strip().lower()
+                    if new_base_lower == 'yes':
+                        record_to_edit["Base"] = True
+                    elif new_base_lower == 'no':
+                        record_to_edit["Base"] = False
                     else:
-                        print("Date Required must be after Request Date.")
-                except ValueError:
-                    print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
-            if new_user:
-                record_to_edit["User"] = new_user
-            if new_customer_number:
-                record_to_edit["Customer Number"] = int(new_customer_number)
-            if new_project_number:
-                record_to_edit["Project Number"] = int(new_project_number)
-            if new_fragrance_number:
-                record_to_edit["Fragrance Number"] = int(new_fragrance_number)
-            if new_dosage:
-                record_to_edit["Dosage"] = float(new_dosage)
-            if new_product_type:
-                record_to_edit["Product Type"] = new_product_type
-            if new_base:
-                new_base_lower = new_base.strip().lower()
-                if new_base_lower == 'yes':
-                    record_to_edit["Base"] = True
-                elif new_base_lower == 'no':
-                    record_to_edit["Base"] = False
-                else:
-                    print("Invalid input for 'Base'. Please enter 'Yes' or 'No'.")
-                # Other updates...
+                        print("Invalid input for 'Base'. Please enter 'Yes' or 'No'.")
+                # Here update the user when record was updated sucessfully
+                print("Record updated successfully.")
             else:
-                print(f"No record found for ID {id_to_edit}.")
-    except ValueError:
+                print(f"No record found for ID {id_to_edit}. Please enter a valid ID.")
+        except ValueError:
             print("Invalid input. Please enter a valid ID.")
+            continue
+        else:
+            break  # Exit the loop if ID is valid and record exists
