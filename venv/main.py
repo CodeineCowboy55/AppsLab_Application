@@ -4,6 +4,27 @@ import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record
 from Admin import delete_record
 
+
+def print_readme():
+    readme_content = """
+    READ ME
+
+    Welcome to the first release of the Application Lab Fragrance Request Application.
+
+    Select a number on the main menu screen to navigate to the page you desire.
+
+    Please ensure to adhere to the validation rules for a successful entry.
+
+    Only the lab manager has access to the password to delete entries in the system.
+
+    For bug reporting, please contact Jean-Michel Ramar at Extension: 2051, Email: jean-michel.ramar@effgroup.com, or Phone: 07478079997.
+
+    For feedback, please refer to Microsoft Teams for the App Feedback Form.
+
+    APP Version 1.3
+    """
+    print(readme_content)
+
 def print_projectdata():
     header = (
         f'{"ID":<5} | {"Date Requested":<15} | {"Date Required":<15} | {"User":<15} | '
@@ -93,10 +114,10 @@ def main():
                 delete_record()
                 go_back_to_home_screen()
             elif user_input == 5:
-                print("Placeholder for Option 5.")
-                go_back_to_home_screen()
+                print_readme()
+                go_back_to_home_screen()  # Navigate back to the home screen after printing the README
             elif user_input == 6:
-                confirm_exit()
+                confirm_exit()          # This will exit the application after confirming yes 
         else:
             print("Invalid input. Please enter a number between 1 and 6.")
 
