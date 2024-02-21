@@ -255,7 +255,7 @@ def print_projectdata_row(id_value, record):
     base_value = "Yes" if record.get("Base") else "No"
 
     temp_str = (
-        f'{id_value:<5} | {record.get("Date Required", ""):<15} | {record.get("Date Required", ""):<15} | {record.get("User", ""):<15} | '
+        f'{id_value:<5} | {record.get("Request Date", ""):<15} | {record.get("Date Required", ""):<15} | {record.get("User", ""):<15} | '
         f'{record.get("Customer Number", ""):<15} | {record.get("Project Number", ""):<15} | {record.get("Fragrance Number", ""):<18} | '
         f'{record.get("Dosage", ""):<10} | {record.get("Product Type", ""):<15} | {base_value:<10}'
     # Display 'Base' as "Yes" or "No"
