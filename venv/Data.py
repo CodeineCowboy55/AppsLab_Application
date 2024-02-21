@@ -244,7 +244,7 @@ def print_projectdata_header():
     header = (
         f'{"ID":<5} | {"Date Required":<15} | {"Date Requested":<15} | {"User":<15} | '
         f'{"Customer Number":<15} | {"Project Number":<15} | {"Fragrance Number":<18} | '
-        f'{"Dosage":<10} | {"Product Type":<15} | {"Base (%)":<10}'  # Updated header for 'Base' column
+        f'{"Dosage (%)":<10} | {"Product Type":<15} | {"Base":<10}'  # Updated header for 'Base' column
     )
     print(header)
     print("-" * len(header))

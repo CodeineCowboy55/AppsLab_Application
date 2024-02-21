@@ -4,7 +4,6 @@ import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record
 from Admin import delete_record
 
-
 def print_readme():
     readme_content = """
     READ ME
@@ -70,12 +69,12 @@ def is_escape_pressed():
 
 #Def main is the main menu that is the start and control of the application here user will select option to navigate
 def main():
+    print("APPLICATION LAB OIL LIBRARY- V1.3\n")
+    print("________________________________________________________________________________________________________________________________________________________________\n")
+    print_projectdata()  # This print project data out of the look as I only need it to print once at the start as go back to home prints the data
+
     while True:
-        print("APPLICATION LAB OIL LIBRARY- V1.3\n")
-        print(
-            "________________________________________________________________________________________________________________________________________________________________\n")
-        print_projectdata()
-        print("Please select an option:")
+        print("\nPlease select an option:")
         print("1. Add record")
         print("2. Search Record")
         print("3. Edit Record")
