@@ -96,20 +96,20 @@ def main():
 
         if 1 <= user_input <= 6:
             if user_input == 1:
-                print("You selected Option 1.")
+                print("You selected Option 1 - Add Record.")
                 add_record()
                 go_back_to_home_screen()
             elif user_input == 2:
-                print("You selected Option 2.")
+                print("You selected Option 2 - Search Record.")
                 record = get_record()
                 print(record)
                 go_back_to_home_screen()
             elif user_input == 3:
-                print("You selected Option 3.")
+                print("You selected Option 3 - Edit Record.")
                 edit_record()
                 go_back_to_home_screen()
             elif user_input == 4:
-                print("You selected Option 4.")
+                print("You selected Option 4 - Delete Record.")
                 delete_record()
                 go_back_to_home_screen()
             elif user_input == 5:
