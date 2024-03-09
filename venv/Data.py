@@ -304,7 +304,7 @@ def edit_record():
                             print("Date Required must be after Request Date.")
                     except ValueError:
                         print("Invalid date format. Please enter a date in the format dd/mm/yyyy.")
-
+# The loop here will allow you to enter the data or then push enter to keep exsisting data
                 if new_user:
                     record_to_edit["User"] = new_user
                 if new_customer_number:
