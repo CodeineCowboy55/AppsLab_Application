@@ -1,8 +1,8 @@
 import datetime
-import msvcrt  # I have imported this moduel to allow me to include a home button
+import msvcrt  # I have imported this moduel to allow me to include to take the user to the home screen
 import sys  # Import the sys module
-from Data import my_projectdict, add_record, get_record, edit_record
-from Admin import delete_record
+from Data import my_projectdict, add_record, get_record, edit_record   #calling all the fuctions from data file
+from Admin import delete_record #allows the admin to delete the record
 
 #This Definition prints the read me file for the user
 def print_readme():
@@ -25,6 +25,7 @@ def print_readme():
     """
     print(readme_content)
 
+#calling this prints the project data
 def print_projectdata():
     header = (
         f'{"ID":<5} | {"Date Requested":<15} | {"Date Required":<15} | {"User":<15} | '
@@ -68,11 +69,11 @@ def confirm_exit():
 def is_escape_pressed():
     return msvcrt.kbhit() and msvcrt.getch() == b'\x1b'
 
-#Def main is the main menu that is the start and control of the application here user will select option to navigate
+#Def main is the main menu that is at the start and controls the application here the user will select option to navigate
 def main():
     print("APPLICATION LAB OIL LIBRARY- V1.3\n")
     print("________________________________________________________________________________________________________________________________________________________________\n")
-    print_projectdata()  # This print project data out of the look as I only need it to print once at the start as go back to home prints the data
+    print_projectdata()  # This print project data out of the loop as I only need it to print once at the start as other fuctions do the same
 
     while True:
         print("\nPlease select an option:")
@@ -91,10 +92,10 @@ def main():
         except (KeyboardInterrupt, EOFError):
             confirm_exit()
 
-        if is_escape_pressed():  # Check if Escape key is pressed
+        if is_escape_pressed():  # Check if Escape key is pressed if escape key is pressed return to the main menu
             print("Going back to the home screen...")
             continue
-
+# Here are all the possible inputs the user can select
         if 1 <= user_input <= 6:
             if user_input == 1:
                 print("You selected Option 1 - Add Record.")
@@ -124,3 +125,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+#calls the main fuction and loads def main when the application starts

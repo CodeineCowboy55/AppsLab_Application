@@ -10,7 +10,7 @@ def delete_record():
         if password == "Gabagoo13!":  #This is the password to enter be able to delete a record, only the admin should know password
             id_tofetch = int(input("Enter the ID to fetch record: "))
             #This part if the Definition will fetch the ID from Project dictionary, then check if it exsists, if its does it will delete the selected ID and all data connected to it.
-            # Checksthe ID user is trying to load
+            # Checks the ID user is trying to load
             if id_tofetch in my_projectdict:
                 del my_projectdict[id_tofetch]
                 print(f'DELETED {id_tofetch}')
