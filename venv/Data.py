@@ -1,4 +1,7 @@
+#imported data time as data has dates
 import datetime
+
+# This is the project dictionary that holds all the hardcoded data for the application
 my_projectdict ={
     1:  {
         "Request Date": "02/02/2024",
@@ -136,7 +139,7 @@ def add_record():
         try:
             date_required_str = input("Enter Date Required (dd/mm/yyyy): ")
             date_required = datetime.datetime.strptime(date_required_str, "%d/%m/%Y")
-            if date_required > request_date:  # Check if Date Required is after Request Date
+            if date_required > request_date:  # Check if date required is after Request Date
                 break
             else:
                 print("Date Required must be after Request Date.")
@@ -146,13 +149,13 @@ def add_record():
 
     # User - no validation required just a name of person entering; this is a string input
     while True:
-        user = input("Enter User Name: ")
+        user = input("Enter User Name: ")  #made sure user cannot enter no value as we require a name
         if user:
             break
         else:
             print("Invalid input. User name cannot be empty.")
 
-    # Customer Number - Must be a 6 digit number
+    # Customer Number - Must be a 6 digit number. code is adjusted to only allow 6 digits
     while True:
         try:
             customer_number = input("Enter Customer Number: ")
@@ -164,7 +167,7 @@ def add_record():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-    # Project Number
+    # Project Number must be a 6 digit input
     while True:
         try:
             project_number = int(input("Enter Project Number: "))
@@ -183,7 +186,7 @@ def add_record():
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    # Dosage
+    # Dosage - This must be a percentage that has to be entered
     while True:
         try:
             dosage = float(input("Enter Fragrance Percentage: "))
@@ -197,7 +200,7 @@ def add_record():
     # Product Type is string so can be the name of the product that needs to be made.
     product_type = input("Enter Product Type: ")
 
-    # Base - Must be yes or no to define if it's a base for another product or its the product's fragrance
+    # Base - Must be yes or no to define if it's a base for another product or its the product's fragrance. Its a Boolean
     while True:
         base = input("Enter Base (Yes/No): ").strip().lower()
         if base == 'yes':
@@ -208,7 +211,7 @@ def add_record():
             break
         else:
             print("Invalid input. Please enter 'Yes' or 'No'.")
-
+# the fuction below adds that data captured to the dictionairy and stores it to the be called later
     index_to_add = max(my_projectdict.keys()) + 1
     my_projectdict[index_to_add] = {
         "Request Date": request_date_str,
@@ -225,7 +228,7 @@ def add_record():
     print(f'Added id {index_to_add}: {my_projectdict[index_to_add]}')
     return my_projectdict[index_to_add]
 
-
+# This fuction pulls the record and gets the data of a selected record based on the ID
 def get_record():
     try:
         id_tofetch = int(input("Enter the ID to fetch record: "))
@@ -240,6 +243,7 @@ def get_record():
     except ValueError:
         print("Invalid input. Please enter a valid ID.")
 
+# Print Project data header is used for displaying all the data in a visually appealing style. Prints the header of data type
 def print_projectdata_header():
     header = (
         f'{"ID":<5} | {"Date Required":<15} | {"Date Requested":<15} | {"User":<15} | '
@@ -249,7 +253,7 @@ def print_projectdata_header():
     print(header)
     print("-" * len(header))
 
-
+# This definition is used print all the data into the rows and diaply them visualy in line with the header
 def print_projectdata_row(id_value, record):
     # Convert 'Base' value to "Yes" or "No" instead of percentage this is crucial as user needs to see it as a yes or no to understand the value
     base_value = "Yes" if record.get("Base") else "No"
@@ -262,6 +266,7 @@ def print_projectdata_row(id_value, record):
     )
     print(temp_str)
 
+# The edit record fuction is here to take an exsisting record and then allow you to re-enter the data
 def edit_record():
     while True:
         try:
