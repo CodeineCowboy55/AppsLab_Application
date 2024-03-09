@@ -1,4 +1,4 @@
-#This definition allows Lab manager to enter the admin password and delete record provided the ID exsists
+#This definition allows the Lab manager to enter the admin password and delete record provided the ID exsists
 from Data import my_projectdict
 
 def delete_record():
@@ -7,7 +7,7 @@ def delete_record():
         password = input("Enter the password to delete records: ")
 
         # Check if the password is correct
-        if password == "Gabagoo13!":  #This is the password enter be able to delete a record only admin should know password
+        if password == "Gabagoo13!":  #This is the password to enter be able to delete a record, only the admin should know password
             id_tofetch = int(input("Enter the ID to fetch record: "))
             #This part of the Definition will fetch ID from Project dictionary then check if it exsists, if its does will delete the selected ID and all data connected to it,
             # Checks if the ID user is trying to load
