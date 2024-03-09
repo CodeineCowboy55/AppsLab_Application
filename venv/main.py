@@ -4,6 +4,7 @@ import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record
 from Admin import delete_record
 
+#This Definition prints the read me file for the user
 def print_readme():
     readme_content = """
     READ ME
@@ -12,9 +13,9 @@ def print_readme():
 
     Select a number on the main menu screen to navigate to the page you desire.
 
-    Please ensure to adhere to the validation rules for a successful entry.
+    Please ensure to adhere to the validation rules for successful entry.
 
-    Only the lab manager has access to the password to delete entries in the system.
+    Only the lab manager has access to delete entries in the system.
 
     For bug reporting, please contact Jean-Michel Ramar at Extension: 2051, Email: jean-michel.ramar@effgroup.com, or Phone: 07478079997.
 
