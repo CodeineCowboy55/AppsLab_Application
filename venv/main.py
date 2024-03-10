@@ -66,8 +66,8 @@ def confirm_exit():
         else:
             print("Invalid input. Please enter 'yes' or 'no'.")
 #this def bellow allows the user no matter where they are in app to go back to the home screen
-def is_escape_pressed():
-    return msvcrt.kbhit() and msvcrt.getch() == b'\x1b'
+def is_home_pressed():
+    return msvcrt.kbhit() and msvcrt.getch() == b'\x1b[H'
 
 #Def main is the main menu that is at the start and controls the application here the user will select option to navigate
 def main():
