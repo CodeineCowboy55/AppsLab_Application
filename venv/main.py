@@ -1,5 +1,4 @@
 import datetime
-import msvcrt  #I have imported this moduel to allow me to include to take the user to the home screen
 import sys  # Import the sys module
 from Data import my_projectdict, add_record, get_record, edit_record   #calling all the fuctions from data file
 from Admin import delete_record #allows the admin to delete the record
@@ -92,9 +91,6 @@ def main():
         except (KeyboardInterrupt, EOFError):
             confirm_exit()
 
-        if is_escape_pressed():  # Check if Escape key is pressed if escape key is pressed return to the main menu
-            print("Going back to the home screen...")
-            continue
 # Here are all the possible inputs the user can select
         if 1 <= user_input <= 6:
             if user_input == 1:
