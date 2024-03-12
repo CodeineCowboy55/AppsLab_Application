@@ -1,5 +1,5 @@
 #This definition allows the Lab manager to enter the admin password and delete record provided the ID exsists
-from Data import my_projectdict
+from application.Data import my_projectdict
 
 def delete_record():
     try:

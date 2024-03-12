@@ -1,7 +1,7 @@
 import datetime
 import sys  # Import the sys module
-from Data import my_projectdict, add_record, get_record, edit_record   #calling all the fuctions from data file
-from Admin import delete_record #allows the admin to delete the record
+from application.Data import my_projectdict, add_record, get_record, edit_record   #calling all the fuctions from data file
+from application.Admin import delete_record #allows the admin to delete the record
 
 #This Definition prints the read me file for the user
 def print_readme():
